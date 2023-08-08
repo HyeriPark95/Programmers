@@ -18,46 +18,35 @@ class Solution {
         key.put("0",arr[10]);
         key.put("#",arr[11]);
         
+        //초기위치
         int[] lh={3,0};
         int[] rh={3,2};
         
-        //숫자 확인하기
         for(int i=0;i<numbers.length;i++){
             String number=Integer.toString(numbers[i]);
-            System.out.println("number:"+number);
             if(number.equals("1")||number.equals("4")||number.equals("7")||number.equals("*")){
                 answer+="L";
                 lh=key.get(number);
-                System.out.println("lh:"+lh[0]+lh[1]);
-                System.out.println("rh:"+rh[0]+rh[1]);
             }else if(number.equals("3")||number.equals("6")||number.equals("9")||number.equals("#")){
                 answer+="R";
                 rh=key.get(number);
-                System.out.println("lh:"+lh[0]+lh[1]);
-                System.out.println("rh:"+rh[0]+rh[1]);
             }else{
                 int[] mid=key.get(number);
-                System.out.println("mid:"+mid[0]+mid[1]);
                 //왼쪽거리 구하기
                 int lx=mid[0]-lh[0];
-                System.out.println("lx:"+lx);
                 int ly=mid[1]-lh[1];
-                System.out.println("ly:"+ly);
                 if(lx<0)lx=lx*-1;
                 if(ly<0)ly=ly*-1;
                 int leftdis=lx+ly;
-                System.out.println("왼쪽거리:"+leftdis);
                 
                 //오른쪽거리 구하기
                 int rx=mid[0]-rh[0];
-                System.out.println("rx:"+rx);
                 int ry=mid[1]-rh[1];
-                System.out.println("ry:"+ry);
                 if(rx<0)rx=rx*-1;
                 if(ry<0)ry=ry*-1;
                 int rightdis=rx+ry;
-                System.out.println("오른쪽거리:"+rightdis);
                 
+                //거리가 더 적은쪽으로 움직이기
                 if(leftdis<rightdis){
                     answer+="L";
                     lh=key.get(number);
@@ -75,10 +64,6 @@ class Solution {
                 }
             }
         }
-        
-        
-        
-        
         return answer;
     }
 }
