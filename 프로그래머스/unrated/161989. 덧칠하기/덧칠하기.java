@@ -5,10 +5,6 @@ class Solution {
         for(int a:section){
             roll[a-1]=1;
         }
-        for(int a:roll){
-            System.out.println(a);
-        }
-        
         for(int i=0;i<roll.length;i++){
             if(roll[i]==1){
                 answer++;
@@ -17,7 +13,6 @@ class Solution {
                 }
             }
         }
-        
         return answer;
     }
 }
